@@ -1,0 +1,41 @@
+import getSomethingQuery from './actions';
+/*
+Defaults
+*/
+
+const nodeDefaults = {
+  dataStore: [],
+};
+
+/*
+Cache Mutations
+*/
+
+export const addSomething = (_obj, { item }, { cache }) => {
+  const query = getSomethingQuery;
+  // Read the data from the cache
+  const { dataStore } = cache.readQuery({ query });
+  // Add the item to the data
+  const updatedData = dataStore.concat(item);
+  // Update the cached data
+  cache.writeQuery({ query, data: { dataStore: updatedData } });
+
+  return updatedData;
+};
+
+/*
+Store
+*/
+
+/**
+ * The Store object used to construct
+ * Apollo Link State's Client State
+ */
+const store = {
+  defaults: nodeDefaults,
+  mutations: {
+    addSomething,
+  },
+};
+
+export default store;

@@ -1,0 +1,43 @@
+/**
+ *
+ * {{ properCase name }}
+ *
+ */
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql, compose } from 'react-apollo';
+import { View, Text } from 'react-native';
+import getSomethingQuery from './actions';
+{{#if wantStyles}}
+// import styles from './styles';
+{{/if}}
+import Loading from '../../components/Loading';
+
+const {{ properCase name }} = props => {
+  const {
+    data: { loading },
+  } = props;
+
+  if (loading) return <Loading />;
+
+  return (
+    <View>
+      <Text>{{name}}</Text>
+    </View>
+  );
+};
+
+{{ properCase name }}.propTypes = {
+  data: PropTypes.shape({
+    loading: PropTypes.bool,
+  }),
+};
+
+{{ properCase name }}.defaultProps = {
+  data: {
+    loading: false,
+  },
+};
+
+export default compose(graphql(getSomethingQuery, { name: 'data' }))({{ properCase name }});

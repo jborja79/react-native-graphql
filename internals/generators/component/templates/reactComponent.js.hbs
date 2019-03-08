@@ -1,0 +1,34 @@
+/**
+ *
+ * {{ properCase name }}
+ *
+ */
+
+import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
+{{#if wantStyles}}
+// import styles from './styles';
+{{/if}}
+
+class {{ properCase name }} extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { test: '' };
+  }
+
+  render() {
+    const { test } = this.state;
+    return (
+      <View>
+        <Text>{test}</Text>
+      </View>
+    );
+  }
+}
+
+{{ properCase name }}.propTypes = {};
+
+{{ properCase name }}.defaultProps = {};
+
+export default {{ properCase name }};

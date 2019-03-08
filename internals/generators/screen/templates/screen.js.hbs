@@ -1,0 +1,30 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, Button } from 'react-native';
+
+const Screen{{ properCase name }} = ({ navigation }) => {
+  const { navigate } = navigation;
+
+  return (
+    <View>
+      <Button
+        title="Go to screen two"
+        onPress={() => navigate('ScreenTwo', { paramOne: 'test string' })}
+      />
+    </View>
+  );
+};
+
+Screen{{ properCase name }}.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }),
+};
+
+Screen{{ properCase name }}.defaultProps = {
+  navigation: {
+    navigate: () => {},
+  },
+};
+
+export default Screen{{ properCase name }};
